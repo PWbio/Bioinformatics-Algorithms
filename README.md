@@ -1,2 +1,2 @@
 # Bioinformatics-Algorithms
-Code creating from leaning Bioinformatics Algorithms
+Practcie and Learn codes based on the book "Bioinformatics Algorithms",written by Phillip Compeau and Pavel Pevzner.
