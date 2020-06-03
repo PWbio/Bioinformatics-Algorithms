@@ -62,11 +62,11 @@ def reverse_complement(dna_seq):
     for i in dna_seq.upper():
         if i == 'A':
             result = "T" + result
-        if i == 'T':
+        elif i == 'T':
             result = "A" + result
-        if i == 'C':
+        elif i == 'C':
             result = "G" + result
-        if i == 'G':
+        elif i == 'G':
             result = "C" + result
     return result
 
@@ -202,3 +202,22 @@ def all_protein_orf_order(dna_seq,threshhold=0):
             if len(orf) > threshhold:
                 insert_protein_order(orf,result_orf)
     return result_orf
+
+##### Chapter 4.5
+
+def read_seq_from_file(filename):
+    """Read a sequence file and covert multiple lines to one line"""
+    files = open(filename,"r")
+    lines = files.readlines()
+    seq=""
+    for l in lines:
+        seq += l.replace("\n","")
+    files.close()
+    return seq
+
+def write_seq_to_file(seq, filename):
+    """Write input sequence to a file"""
+    files=open(filename,"w")
+    files.write(seq)
+    files.close()
+    return None
