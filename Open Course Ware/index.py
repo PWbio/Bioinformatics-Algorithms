@@ -9,4 +9,12 @@ class Index(object):
         self.k = k
         self.index = []
         for i in range(len(t) - k + 1):
-            self.index.append((t[i:i+k]), i)
+            self.index.append((t[i:i+k],i)) # Tuple
+
+x=Index("ATGATGTAGGTA", 3)
+x.index
+
+t="xyzqwe"
+x=["123456"]
+x.append((1,0))
+x
