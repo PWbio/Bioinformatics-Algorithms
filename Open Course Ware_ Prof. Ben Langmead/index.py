@@ -70,33 +70,21 @@ class Index_v3(object):
             i += 1
         return hits
 
-import sys
-file = open(r"C:\Users\Home\Downloads\sequence.fasta","r")
-def read_seq_from_file(filename):
-    """Read a sequence file and covert multiple lines to one line"""
-    files = open(filename,"r")
-    lines = files.readlines()
-    seq=""
-    for l in lines:
-        seq += l.replace("\n","")
-    files.close()
-    return seq
-
-t="ATGATGTAATGGGTA"
+t="ATGATGTAACGATCGTACGTACGTGACGTCATCGAGGCAGCTGATGGGTA"
 p="ATGATGTAA"
+A= Index(t,3)
 
-seq=read_seq_from_file(r"C:\Users\Home\Downloads\sequence.fasta")
-text = seq[100:100000]
-
-Linear_dict = Index_v2(text, 3)
-Linear_tuple = Index_v3(text, 3)
-Log_tuple = Index(text, 3)
+Linear_dict = Index_v2(t, 3)
+Linear_tuple = Index_v3(t, 3)
+Log_tuple = Index(t, 3)
 Linear_dict.query(p)
 Linear_tuple.query(p)
 Linear_tuple.query(p)
 
 import timeit
-timeit.timeit(f"{Linear_dict.query(p)}")
-timeit.timeit(f"{Linear_tuple.query(p)}")
-timeit.timeit(f"{Log_tuple.query(p)}")
-
+def time():
+    X= timeit.timeit('Linear_dict.query(p)', 'from __main__ import Index_v2, t, p, A, Linear_dict', number=100000)
+    Y= timeit.timeit('Linear_tuple.query(p)', 'from __main__ import Index_v3, t, p, A, Linear_tuple', number=100000)
+    Z= timeit.timeit('Log_tuple.query(p)', 'from __main__ import Index, t, p, A, Log_tuple', number=100000)
+    print(X, Y, Z)
+time()
